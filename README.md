@@ -1,6 +1,5 @@
-=====================
 Django-Wallet
-
+=====================
 A simple wallet django app.
 ---------------------------
 Get All a Wallets:      
