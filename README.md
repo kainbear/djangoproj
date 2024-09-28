@@ -1,7 +1,8 @@
+=====================
 Django-Wallet
 \\
 A simple wallet django app.
-```
+=====================
 Get All a Wallets:
 http://127.0.0.1:8000/api/v1/wallets/
 
@@ -16,7 +17,7 @@ http://127.0.0.1:8000/api/v1/wallets/<str:WALLET_UUID>/operation/
 
 Get a Info of Transaction using transaction_id:
 http://127.0.0.1:8000/api/v1/transactions/<int:transaction_id>/
-```
+-----------------------------------
 ````
 To start app use:
 ```
@@ -29,3 +30,4 @@ For Example for operation use :
     "amount": x
 }
 ````
+-----------------------------------
