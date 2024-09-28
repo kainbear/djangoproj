@@ -3,21 +3,28 @@ version: '3.8'
 services:
   web:
     build: .
+    container_name: djangoproj
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - .:/djangoproj
     depends_on:
       - db
 
   db:
-    image: postgres:13
+    image: postgres:16
     environment:
       POSTGRES_DB: dbtestcase
       POSTGRES_USER: dbtestcase
       POSTGRES_PASSWORD: dbtestcase
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:

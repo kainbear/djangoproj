@@ -1,14 +1,16 @@
-# Используем официальный образ Python
-FROM python:3.9
+FROM python:3.12.2
 
-# Устанавливаем рабочую директорию
-WORKDIR /app
+RUN apt-get update && apt-get install -y build-essential libyaml-dev
 
-# Копируем файлы проекта
-COPY . .
+WORKDIR /djangoproj/testcase
 
-# Устанавливаем зависимости
-RUN pip install -r requirements.txt
+COPY requirements.txt .
 
-# Запускаем сервер
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install ptvsd
+RUN pip install --upgrade pip setuptools wheel
+
+COPY . /app
+
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
